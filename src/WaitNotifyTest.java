@@ -18,7 +18,7 @@ public class WaitNotifyTest {
             myInc++;
             notify();
             try {
-                wait(100);
+                wait();
             } catch (InterruptedException e) {
 
             }
