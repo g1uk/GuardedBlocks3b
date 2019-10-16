@@ -16,12 +16,12 @@ public class WaitNotifyTest {
     public synchronized void incremenator () {
         while (myInc < AMOUNT_OF_ITERATIONS) {
             myInc++;
-            notify();
             try {
                 wait();
             } catch (InterruptedException e) {
 
             }
+            notify();
 
         }
 
