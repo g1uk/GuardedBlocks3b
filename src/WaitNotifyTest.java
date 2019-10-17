@@ -24,6 +24,7 @@ public class WaitNotifyTest {
                 try {
                     wait();
                 } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
 
                 }
             }
@@ -44,7 +45,7 @@ public class WaitNotifyTest {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-
+                        Thread.currentThread().interrupt();
                 }
             }
 
