@@ -16,7 +16,7 @@ public class WaitNotifyTest {
         incrementPrint.start();
     }
     public synchronized void incremenator () {
-        while (myInc < AMOUNT_OF_ITERATIONS) {
+        while (myInc < AMOUNT_OF_ITERATIONS && !Thread.currentThread().isInterrupted()) {
             myInc++;
             isIncrement = true;
             isPrint = false;
@@ -24,7 +24,7 @@ public class WaitNotifyTest {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
+                        break;
 
                 }
             }
@@ -36,7 +36,7 @@ public class WaitNotifyTest {
         notifyAll();
     }
     public synchronized void printer () {
-        while (!finish) {
+        while (!finish && !Thread.currentThread().isInterrupted()) {
             System.out.println(myInc);
             isIncrement = false;
             isPrint = true;
@@ -45,7 +45,7 @@ public class WaitNotifyTest {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
+                        break;
                 }
             }
 
